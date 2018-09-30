@@ -4,25 +4,24 @@ except ImportError:
     from distutils.core import setup
 
 setup(
-    name='ethjsonrpc',
-    version='0.3.0',
+    name='eth_rpc_api',
+    version='0.3.9',
     description='Ethereum JSON-RPC client',
     long_description=open('README.rst').read(),
-    author='ConsenSys',
-    author_email='info@consensys.net',
-    url='https://github.com/ConsenSys/ethjsonrpc',
-    packages=['ethjsonrpc'],
-    license='Unlicense',
+    author='Dead Possum Labs (forked fromn Consensus)',
+    author_email='info@consensys.net, d.soldatenko@dplabs.irish ',
+    url='https://github.com/sl4mmer/eth_rpc_api',
+    packages=['eth_rpc_api'],
+    license='MIT',
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: rebelious beta',
         'Intended Audience :: Developers',
-        'License :: Public Domain',
+        'License :: MIT',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
     ],
     install_requires=[
-        'ethereum==1.0.8',
-        'requests==2.9.1',
+        'ethereum==2.*',
+        'requests==2.*',
     ],
 )

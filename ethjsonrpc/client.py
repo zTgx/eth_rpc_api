@@ -26,7 +26,7 @@ class EthJsonRpc(object):
     '''
 
     DEFAULT_GAS_PER_TX = 90000
-    DEFAULT_GAS_PRICE = 50 * 10**9  # 50 gwei
+    DEFAULT_GAS_PRICE = 50 * 10 ** 9  # 50 gwei
 
     def __init__(self, host='localhost', port=GETH_DEFAULT_RPC_PORT, tls=False):
         self.host = host
@@ -40,9 +40,9 @@ class EthJsonRpc(object):
         params = params or []
         data = {
             'jsonrpc': '2.0',
-            'method':  method,
-            'params':  params,
-            'id':      _id,
+            'method': method,
+            'params': params,
+            'id': _id,
         }
         scheme = 'http'
         if self.tls:
@@ -78,9 +78,9 @@ class EthJsonRpc(object):
         encoded_params = encode_abi(types, param_values)
         return utils.zpad(utils.encode_int(prefix), 4) + encoded_params
 
-################################################################################
-# high-level methods
-################################################################################
+    ################################################################################
+    # high-level methods
+    ################################################################################
 
     def transfer(self, from_, to, amount):
         '''
@@ -95,9 +95,9 @@ class EthJsonRpc(object):
         '''
         from_ = from_ or self.eth_coinbase()
         if sig is not None and args is not None:
-             types = sig[sig.find('(') + 1: sig.find(')')].split(',')
-             encoded_params = encode_abi(types, args)
-             code += encoded_params.encode('hex')
+            types = sig[sig.find('(') + 1: sig.find(')')].split(',')
+            encoded_params = encode_abi(types, args)
+            code += encoded_params.encode('hex')
         return self.eth_sendTransaction(from_address=from_, gas=gas, data=code)
 
     def get_contract_address(self, tx):
@@ -129,9 +129,9 @@ class EthJsonRpc(object):
         return self.eth_sendTransaction(from_address=from_, to_address=address, data=data_hex, gas=gas,
                                         gas_price=gas_price, value=value)
 
-################################################################################
-# JSON-RPC methods
-################################################################################
+    ################################################################################
+    # JSON-RPC methods
+    ################################################################################
 
     def web3_clientVersion(self):
         '''
@@ -306,7 +306,7 @@ class EthJsonRpc(object):
 
         NEEDS TESTING
         '''
-        if isinstance(default_block, basestring):
+        if isinstance(default_block, str):
             if default_block not in BLOCK_TAGS:
                 raise ValueError
         return self._call('eth_getCode', [address, default_block])
@@ -326,8 +326,7 @@ class EthJsonRpc(object):
 
         NEEDS TESTING
         '''
-        params = {}
-        params['from'] = from_address or self.eth_coinbase()
+        params = {'from': from_address or self.eth_coinbase()}
         if to_address is not None:
             params['to'] = to_address
         if gas is not None:
@@ -357,11 +356,10 @@ class EthJsonRpc(object):
 
         NEEDS TESTING
         '''
-        if isinstance(default_block, basestring):
+        if isinstance(default_block, str):
             if default_block not in BLOCK_TAGS:
                 raise ValueError
-        obj = {}
-        obj['to'] = to_address
+        obj = {'to': to_address}
         if from_address is not None:
             obj['from'] = from_address
         if gas is not None:
@@ -381,7 +379,7 @@ class EthJsonRpc(object):
 
         NEEDS TESTING
         '''
-        if isinstance(default_block, basestring):
+        if isinstance(default_block, str):
             if default_block not in BLOCK_TAGS:
                 raise ValueError
         obj = {}
@@ -506,9 +504,9 @@ class EthJsonRpc(object):
         '''
         _filter = {
             'fromBlock': from_block,
-            'toBlock':   to_block,
-            'address':   address,
-            'topics':    topics,
+            'toBlock': to_block,
+            'address': address,
+            'topics': topics,
         }
         return self._call('eth_newFilter', [_filter])
 
@@ -637,12 +635,12 @@ class EthJsonRpc(object):
         NEEDS TESTING
         '''
         whisper_object = {
-            'from':     from_,
-            'to':       to,
-            'topics':   topics,
-            'payload':  payload,
+            'from': from_,
+            'to': to,
+            'topics': topics,
+            'payload': payload,
             'priority': hex(priority),
-            'ttl':      hex(ttl),
+            'ttl': hex(ttl),
         }
         return self._call('shh_post', [whisper_object])
 
@@ -685,7 +683,7 @@ class EthJsonRpc(object):
         NEEDS TESTING
         '''
         _filter = {
-            'to':     to,
+            'to': to,
             'topics': topics,
         }
         return self._call('shh_newFilter', [_filter])

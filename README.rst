@@ -1,5 +1,13 @@
-ethjsonrpc
+
+tl;dr
 ==========
+The original library from Consensus is quite useful, although it is obviously no longer supported. It's time to remove patches from Dockerfiles ^^
+
+
+
+
+eth_rpc_api
+===========
 
 Python client for Ethereum using the JSON-RPC interface
 
@@ -15,32 +23,25 @@ Installation
 ------------
 
 You may need additional libraries and tools before installing ethjsonrpc.
+If you see something like that:
 
-On Ubuntu 16.04:
+.. code:: bash
+    scrypt-1.2.1/libcperciva/crypto/crypto_aes.c:6:10: fatal error: openssl/aes.h: Нет такого файла или каталога
+     #include <openssl/aes.h>
+              ^~~~~~~~~~~~~~~
+    compilation terminated.
+    error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+
+
+Install libssl-dev packqage
+
+
+
+To install  eth_rpc_api:
 
 .. code:: bash
 
-   $ sudo apt install python-minimal
-   $ sudo apt install gcc
-   $ sudo apt install virtualenv  # optional but recommended
-   $ sudo apt install libpython-dev
-   $ sudo apt install libssl-dev
-
-
-On Ubuntu 14.04:
-
-.. code:: bash
-
-   $ sudo apt-get install python-virtualenv  # optional but recommended
-   $ sudo apt-get install libpython-dev
-   $ sudo apt-get install libssl-dev
-
-
-To install ethjsonrpc:
-
-.. code:: bash
-
-   $ pip install ethjsonrpc
+   $ pip3 install eth_rpc_api
 
 
 Make sure to have a node running an Ethereum client (such as geth) for the library to connect to.
