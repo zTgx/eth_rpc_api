@@ -133,6 +133,14 @@ class EthJsonRpc(object):
     # JSON-RPC methods
     ################################################################################
 
+    def eth_chainId(self):
+        '''
+        https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_chainId
+
+        TESTED
+        '''
+        return self._call('eth_chainId')
+
     def web3_clientVersion(self):
         '''
         https://github.com/ethereum/wiki/wiki/JSON-RPC#web3_clientversion
