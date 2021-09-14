@@ -23,5 +23,6 @@ setup(
     install_requires=[
         'ethereum==2.*',
         'requests==2.*',
+        'locust==2.*',
     ],
 )

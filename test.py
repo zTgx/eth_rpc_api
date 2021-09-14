@@ -13,15 +13,15 @@ methods = [
     'eth_gasPrice',
     'eth_accounts',
     'eth_blockNumber',
-    'eth_getCompilers',
-    'eth_newPendingTransactionFilter',
+    # 'eth_getCompilers',
+    # 'eth_newPendingTransactionFilter',
     'eth_getWork',
     #    'shh_version',
     #    'shh_newIdentity',
     #    'shh_newGroup',
 ]
 
-c = EthJsonRpc()
+c = EthJsonRpc('127.0.0.1', 8545)
 print(len(methods))
 for m in methods:
     meth = getattr(c, m)
