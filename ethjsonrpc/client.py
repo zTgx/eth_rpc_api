@@ -334,6 +334,19 @@ class EthJsonRpc(object):
 
         NEEDS TESTING
         '''
+        # params = {'from': from_address or self.eth_coinbase()}
+        # if to_address is not None:
+        #     params['to'] = to_address
+        # if gas is not None:
+        #     params['gas'] = hex(gas)
+        # if gas_price is not None:
+        #     params['gasPrice'] = clean_hex(gas_price)
+        # if value is not None:
+        #     params['value'] = clean_hex(value)
+        # if data is not None:
+        #     params['data'] = data
+        # if nonce is not None:
+        #     params['nonce'] = hex(nonce)
         params = {'from': from_address or self.eth_coinbase()}
         if to_address is not None:
             params['to'] = to_address
